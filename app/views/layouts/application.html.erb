@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MiniApplication</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Sample</title>
+  <style type="text/css" href="./style.css"></style>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="#80deea cyan lighten-3">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">mini app</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">ログイン</a></li>
+        <li><a href="#">ログアウト</a></li>
+        <li><a href="#">新規投稿</a></li>
+      </ul>
+    </div>
+  </nav>
+  <%= yield %>
+<script type="text/javascript" src="./app.js"></script>
+</body>
 </html>
