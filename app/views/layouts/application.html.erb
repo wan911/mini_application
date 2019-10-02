@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Sample</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <style type="text/css" href="./style.css"></style>
-
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
@@ -18,9 +18,16 @@
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">mini app</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">ログイン</a></li>
-        <li><a href="#">ログアウト</a></li>
-        <li><a href="#">新規投稿</a></li>
+        <% if user_signed_in?%>
+          <li>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </li>
+          <li><a href="#">新規投稿</a></li>
+        <% else %>
+          <li>
+            <%= link_to "ログイン", user_session_path %> 
+          </li>
+        <% end %>
       </ul>
     </div>
   </nav>
