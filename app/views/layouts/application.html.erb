@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <style type="text/css" href="./style.css"></style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
@@ -27,11 +28,14 @@
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </li>
           <li>
-            <%= link_to "新規投稿", new_tweet_path %>%
+            <%= link_to "新規投稿", new_tweet_path %>
+          </li>
+          <li>
+            <%= link_to "退会する", user_path(current_user), method: :delete %>
           </li>
         <% else %>
           <li>
-            <%= link_to "ログイン", user_session_path %> 
+            <%= link_to "ログイン", user_session_path(current_user) %> 
           </li>
         <% end %>
       </ul>
@@ -39,5 +43,6 @@
   </nav>
   <%= yield %>
 <script type="text/javascript" src="./app.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>
