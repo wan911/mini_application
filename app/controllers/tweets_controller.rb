@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
+  before_action :tweet_index, except: :index
+
   def index
-    @tweets = Tweet.order("created_at DESC").limit(5)
+    @tweets = Tweet.order("created_at DESC")
   end
 
   def new
@@ -18,6 +20,7 @@ class TweetsController < ApplicationController
 
   def edit
     @tweet = Tweet.find(params[:id])
+    redirect_to root_path unless @tweet.user_id == current_user.id
   end
 
   def update
@@ -39,5 +42,9 @@ class TweetsController < ApplicationController
 
   def tweet_params
     params.require(:tweet).permit(:text).merge(user_id: current_user.id)
+  end
+
+  def tweet_index
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
